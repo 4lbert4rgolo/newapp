@@ -15,7 +15,21 @@
         <p>Postado por {{$produto->user->firstName}}<br>
             Categoria: {{$produto->Categoria->nome}}
         </p>    
+       
+        <form action="{{ route('site.addcarrinho')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            
+            <input type="hidden" name="id" value="{{ $produto->id}}">
+            <input type="hidden" name="name" value="{{ $produto->name}}">
+            <input type="hidden" name="price" value="{{ $produto->preco}}">
+            <input type="number" name="qnt" value="1">
+            <input type="hidden" name="img" value="{{ $produto->imagem}}">
         <button class="btn blue btn-large">Comprar</button>
+        </form>
+        
+
+
+
 </div>
 
 
